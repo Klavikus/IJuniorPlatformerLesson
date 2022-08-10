@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace EntityComponents.Movement
 {
@@ -13,7 +14,7 @@ namespace EntityComponents.Movement
         [SerializeField] private Transform _wallCheckAnchor;
         [SerializeField] private float _groundedRadius;
         [SerializeField] private Vector2 _wallCheckerSize;
-        [SerializeField] private float _speed;
+        [SerializeField] private float _horizontalSpeed;
         [SerializeField] private float _jumpForce;
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuration;
@@ -52,7 +53,7 @@ namespace EntityComponents.Movement
             if (_isFacedWall)
                 return;
 
-            _rigidbody.velocity = new Vector2(horizontalInput * _speed, _rigidbody.velocity.y);
+            _rigidbody.velocity = new Vector2(horizontalInput * _horizontalSpeed, _rigidbody.velocity.y);
         }
 
         public void HandleJump()
@@ -120,14 +121,14 @@ namespace EntityComponents.Movement
         private void UpdateStatus()
         {
             IsGrounded = Physics2D.OverlapCircle(_groundCheckAnchor.position, _groundedRadius, _whatIsGround);
-            _isFacedWall = Physics2D.OverlapBox(_wallCheckAnchor.position, _wallCheckerSize, _whatIsWall);
+            _isFacedWall = Physics2D.OverlapBox(_wallCheckAnchor.position, _wallCheckerSize, 0,_whatIsWall);
 
             DrawDebugBox(_wallCheckAnchor.position, _wallCheckerSize, Color.blue, 1f);
 
             if (_isDoubleJumpAllowed == false && IsGrounded)
                 _isDoubleJumpAllowed = true;
 
-            CurrentMoveSpeed = Mathf.Abs(_rigidbody.velocity.x) / _speed;
+            CurrentMoveSpeed = Mathf.Abs(_rigidbody.velocity.x) / _horizontalSpeed;
         }
 
         private void OnDrawGizmos()
