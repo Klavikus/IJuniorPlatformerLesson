@@ -1,4 +1,6 @@
-﻿using EntityComponents.Movement;
+﻿using System;
+using EntityComponents.Input;
+using EntityComponents.Movement;
 using UnityEngine;
 
 namespace ScriptsForSort.States
@@ -9,11 +11,13 @@ namespace ScriptsForSort.States
 
         private readonly Animator _animator;
         private readonly MoveController2D _moveController;
+        private readonly InputHandler _inputHandler;
 
-        public Jumping(Animator animator, MoveController2D moveController)
+        public Jumping(Animator animator, MoveController2D moveController, InputHandler inputHandler)
         {
             _animator = animator;
             _moveController = moveController;
+            _inputHandler = inputHandler;
         }
 
 
@@ -21,13 +25,21 @@ namespace ScriptsForSort.States
         {
         }
 
-        public void OnEnter()
+        public void Enter()
         {
+            _inputHandler.InputUpdated += OnInputUpdated;
             _animator.SetBool(IsJumping, true);
         }
 
-        public void OnExit()
+        public void Exit()
         {
+            _inputHandler.InputUpdated -= OnInputUpdated;
+            _animator.SetBool(IsJumping, false);
+        }
+
+        private void OnInputUpdated(InputData inputData)
+        {
+            // _moveController.HandleInput(inputData);
         }
     }
 }

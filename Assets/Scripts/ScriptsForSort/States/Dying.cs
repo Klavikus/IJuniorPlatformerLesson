@@ -17,12 +17,12 @@ namespace ScriptsForSort.States
         {
         }
 
-        public void OnEnter()
+        public void Enter()
         {
             _animator.SetBool(DyingHash, true);
         }
 
-        public void OnExit()
+        public void Exit()
         {
             _animator.SetBool(DyingHash, false);
         }

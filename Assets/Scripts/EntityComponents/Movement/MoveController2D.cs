@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using EntityComponents.Input;
 using UnityEngine;
 
 namespace EntityComponents.Movement
@@ -41,6 +43,17 @@ namespace EntityComponents.Movement
 
         private void Update() => UpdateStatus();
 
+        public void HandleInput(InputData inputData)
+        {
+            if (Math.Abs(inputData.Horizontal) > 0.1f)
+                HandleMove(inputData.Horizontal);
+
+            if (inputData.IsJumping)
+                HandleJump();
+
+            if (inputData.IsDashed) 
+                HandleDash();
+        }
         public void HandleMove(float horizontalInput)
         {
             if (_isMoveLocked)
