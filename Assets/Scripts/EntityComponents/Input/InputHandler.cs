@@ -1,35 +1,33 @@
-using EntityComponents.Attack;
-using EntityComponents.Movement;
+using StateMachine;
 using UnityEngine;
 
 namespace EntityComponents.Input
 {
     public class InputHandler : MonoBehaviour
     {
-        [SerializeField] private MoveController2D _moveController;
-        [SerializeField] private AttackController _attackController;
+        [SerializeField] private StateMachine.StateMachine _playerStateMachine;
 
         private const int MaxHorizontalInput = 1;
 
         private void Update()
         {
             if (UnityEngine.Input.GetKey(KeyCode.A))
-                _moveController.HandleMove(-MaxHorizontalInput);
+                _playerStateMachine.SwitchState<Move>(-MaxHorizontalInput);
 
             if (UnityEngine.Input.GetKey(KeyCode.D))
-                _moveController.HandleMove(MaxHorizontalInput);
+                _playerStateMachine.SwitchState<Move>(MaxHorizontalInput);
 
             if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
-                _moveController.HandleJump();
+                _playerStateMachine.SwitchState<Jump>(0);
 
             if (UnityEngine.Input.GetKeyDown(KeyCode.LeftShift))
-                _moveController.HandleDash();
+                _playerStateMachine.SwitchState<Dash>(0);
 
             if (UnityEngine.Input.GetMouseButtonDown(0))
-                _attackController.TryAttack();
+                _playerStateMachine.SwitchState<StateMachine.Attack>(0);
 
             if (UnityEngine.Input.GetMouseButtonDown(1))
-                _attackController.TrySecondaryAttack();
+                _playerStateMachine.SwitchState<StateMachine.Attack>(1);
         }
     }
 }

@@ -400,12 +400,6 @@ CompositeCollider2D:
       - X: 110000000
         Y: -52812500
       - X: 110000000
-        Y: 89999900
-      - X: 109999959
-        Y: 89999900
-      - X: 109999900
-        Y: 89999959
-      - X: 109999900
         Y: 100000000
       - X: -170000000
         Y: 100000000
@@ -444,25 +438,9 @@ CompositeCollider2D:
       - X: -160000000
         Y: 0
       - X: -160000000
-        Y: 79999900
-      - X: -160000041
-        Y: 79999900
-      - X: -160000100
-        Y: 79999959
-      - X: -160000100
-        Y: 90000041
-      - X: -160000041
-        Y: 90000100
-      - X: 100000041
-        Y: 90000100
-      - X: 100000100
-        Y: 90000041
-      - X: 100000100
-        Y: 79999959
-      - X: 100000041
-        Y: 79999900
+        Y: 90000000
       - X: 100000000
-        Y: 79999900
+        Y: 90000000
       - X: 100000000
         Y: -30000000
     - - X: 59062500
@@ -486,7 +464,7 @@ CompositeCollider2D:
     - - {x: 10.593738, y: -6}
       - {x: 10.906251, y: -5.5937457}
       - {x: 11, y: -5.281246}
-      - {x: 10.999961, y: 10}
+      - {x: 10.99997, y: 10}
       - {x: -17, y: 9.99997}
       - {x: -16.999996, y: -5.4062557}
       - {x: -16.812492, y: -5.7812543}
@@ -505,8 +483,8 @@ CompositeCollider2D:
       - {x: -12.0625105, y: -0.093743704}
       - {x: -12.218758, y: 0}
       - {x: -16, y: 0.0000294}
-      - {x: -15.999974, y: 9.00001}
-      - {x: 10.00001, y: 8.999974}
+      - {x: -15.999971, y: 9}
+      - {x: 10, y: 8.99997}
     - - {x: 5.5937366, y: -2}
       - {x: 5.9062514, y: -1.5937455}
       - {x: 6, y: -1.2812461}
@@ -533,7 +511,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 40264080bd1d5c34c8d7211c116d29b1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2787,6 +2765,47 @@ Transform:
   m_Father: {fileID: 4180839}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1492439069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7069768731943669935, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
+  m_PrefabInstance: {fileID: 7069768731430232510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492439070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492439069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d490b2bf419d34f9bcbc3ecabd1249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveController: {fileID: 1492439071}
+  _attackController: {fileID: 1492439074}
+--- !u!114 &1492439071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7069768731943669933, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
+  m_PrefabInstance: {fileID: 7069768731430232510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492439069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1973adff3ce1041b5f07fa7fbee4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1492439074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7069768731943669927, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
+  m_PrefabInstance: {fileID: 7069768731430232510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492439069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d426b8e00a4e4da41f0ee46f36c16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1857728790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7069768731943669928, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
@@ -3061,6 +3080,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7069768731943669924, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7069768731943669928, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3105,6 +3128,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7069768731943669929, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
+      propertyPath: _playerStateMachine
+      value: 
+      objectReference: {fileID: 1492439070}
     - target: {fileID: 7069768731943669930, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
       propertyPath: m_Material
       value: 

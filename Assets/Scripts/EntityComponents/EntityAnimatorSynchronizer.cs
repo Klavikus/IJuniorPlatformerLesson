@@ -8,8 +8,8 @@ namespace EntityComponents
     {
         [SerializeField] private MoveController2D _moveController;
         [SerializeField] private AttackController _attackController;
-        [SerializeField] private Animator _animator;
         [SerializeField] private DamageHandler _damageHandler;
+        [SerializeField] private Animator _animator;
 
         private const float MaxError = 0.3f;
 
