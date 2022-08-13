@@ -322,8 +322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveController: {fileID: 1275793558759553950}
   _attackController: {fileID: 1275793558759553951}
-  _animator: {fileID: 135998337}
   _damageHandler: {fileID: 1592732954}
+  _animator: {fileID: 135998337}
 --- !u!114 &1592732954
 MonoBehaviour:
   m_ObjectHideFlags: 0

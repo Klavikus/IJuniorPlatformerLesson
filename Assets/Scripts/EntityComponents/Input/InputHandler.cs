@@ -5,29 +5,29 @@ namespace EntityComponents.Input
 {
     public class InputHandler : MonoBehaviour
     {
-        [SerializeField] private StateMachine.StateMachine _playerStateMachine;
+        [SerializeField] private SimpleStateMachine playerSimpleStateMachine;
 
         private const int MaxHorizontalInput = 1;
 
         private void Update()
         {
             if (UnityEngine.Input.GetKey(KeyCode.A))
-                _playerStateMachine.SwitchState<Move>(-MaxHorizontalInput);
+                playerSimpleStateMachine.Move(-MaxHorizontalInput);
 
             if (UnityEngine.Input.GetKey(KeyCode.D))
-                _playerStateMachine.SwitchState<Move>(MaxHorizontalInput);
+                playerSimpleStateMachine.Move(MaxHorizontalInput);
 
             if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
-                _playerStateMachine.SwitchState<Jump>(0);
+                playerSimpleStateMachine.Jump();
 
             if (UnityEngine.Input.GetKeyDown(KeyCode.LeftShift))
-                _playerStateMachine.SwitchState<Dash>(0);
+                playerSimpleStateMachine.Dash();
 
             if (UnityEngine.Input.GetMouseButtonDown(0))
-                _playerStateMachine.SwitchState<StateMachine.Attack>(0);
+                playerSimpleStateMachine.MainAttack();
 
             if (UnityEngine.Input.GetMouseButtonDown(1))
-                _playerStateMachine.SwitchState<StateMachine.Attack>(1);
+                playerSimpleStateMachine.SecondaryAttack();
         }
     }
 }

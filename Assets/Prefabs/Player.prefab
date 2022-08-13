@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 7069768731943669927}
   - component: {fileID: 7069768731943669925}
   - component: {fileID: 7069768731943669924}
+  - component: {fileID: 1492439070}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -215,7 +216,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 40264080bd1d5c34c8d7211c116d29b1, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -251,8 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f67ad4b1fb9294a903c6eaa9f14216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveController: {fileID: 7069768731943669933}
-  _attackController: {fileID: 7069768731943669927}
+  playerSimpleStateMachine: {fileID: 1492439070}
 --- !u!114 &7069768731943669933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,12 +323,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7069768731943669935}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34ff75774c1145cda6cf3f9eb3741d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _moveController: {fileID: 7069768731943669933}
   _attackController: {fileID: 7069768731943669927}
-  _animator: {fileID: 7069768731943669926}
   _damageHandler: {fileID: 7069768731943669925}
+  _animator: {fileID: 7069768731943669926}
+--- !u!114 &1492439070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069768731943669935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d490b2bf419d34f9bcbc3ecabd1249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveController: {fileID: 7069768731943669933}
+  _attackController: {fileID: 7069768731943669927}

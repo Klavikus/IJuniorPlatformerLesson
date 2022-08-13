@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-
 namespace EntityComponents.Attack
 {
     [RequireComponent(typeof(Collider2D))]

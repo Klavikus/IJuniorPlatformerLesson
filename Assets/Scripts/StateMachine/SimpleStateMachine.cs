@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace StateMachine
 {
-    public class StateMachine : MonoBehaviour
+    public class SimpleStateMachine : MonoBehaviour
     {
         [SerializeField] private MoveController2D _moveController;
         [SerializeField] private AttackController _attackController;
@@ -30,7 +30,16 @@ namespace StateMachine
             SwitchState<Idle>(0);
         }
 
-        public void SwitchState<T>(int payload) where T : IState
+        public void Move(int horizontalDirection) => SwitchState<Move>(horizontalDirection);
+        
+        public void Jump() => SwitchState<Jump>(0);
+        
+        public void Dash() => SwitchState<Dash>(0);
+
+        public void MainAttack()=> SwitchState<Attack>(0);
+        public void SecondaryAttack()=> SwitchState<Attack>(1);
+
+        private void SwitchState<T>(int payload) where T : IState
         {
             PreviousState = CurrentState;
             CurrentState?.Exit();
