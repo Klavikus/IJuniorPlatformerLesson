@@ -12,7 +12,7 @@ namespace EntityComponents.Attack
         [SerializeField] private float _attackHitDelay;
         [SerializeField] private Vector2 _mainAttackHitSize;
 
-        [SerializeField] private GameObject _secondaryWeaponPrefab;
+        [SerializeField] private ThrowWeapon _secondaryWeaponPrefab;
         [SerializeField] private Transform _secondaryWeaponPivot;
         [SerializeField] private float _secondaryAttackCooldown;
 
@@ -44,10 +44,10 @@ namespace EntityComponents.Attack
             _isSecondaryAttackLocked = true;
 
             StartCoroutine(StartCooldown(_secondaryAttackCooldown, OnEnded: () => _isSecondaryAttackLocked = false));
-            GameObject spawnedObject = Instantiate(_secondaryWeaponPrefab, _secondaryWeaponPivot.position,
+            ThrowWeapon spawnedObject = Instantiate(_secondaryWeaponPrefab, _secondaryWeaponPivot.position,
                 _secondaryWeaponPivot.rotation);
 
-            spawnedObject.GetComponent<ThrowWeapon>().Init(_whatAttack);
+            spawnedObject.Init(_whatAttack);
 
             if (transform.localScale.x < 0)
                 spawnedObject.transform.Rotate(new Vector3(0, 0, 1), 180);

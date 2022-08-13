@@ -235,6 +235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1275793558759553951, guid: d51d5e9bfafb60c4bba9426d4488915d, type: 3}
+      propertyPath: _secondaryWeaponPrefab
+      value: 
+      objectReference: {fileID: 7321313261964834593, guid: 007e61e4bd194454e87401bfdbe04df7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51d5e9bfafb60c4bba9426d4488915d, type: 3}
 --- !u!4 &293831227 stripped
@@ -3039,6 +3043,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7069768731943669927, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
+      propertyPath: _secondaryWeaponPrefab
+      value: 
+      objectReference: {fileID: 7321313261964834593, guid: 1a78d99d2e438ca449f076b4a6d382b6, type: 3}
     - target: {fileID: 7069768731943669928, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3087,5 +3095,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1492439070, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}

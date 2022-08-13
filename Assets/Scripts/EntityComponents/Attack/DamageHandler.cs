@@ -12,7 +12,7 @@ namespace EntityComponents.Attack
 
         private float _currentHealth;
 
-        private bool _isDead;
+        public bool IsDead { private set; get; }
 
         public event Action<float> HealthChanged;
 
@@ -22,13 +22,14 @@ namespace EntityComponents.Attack
 
         public void ApplyDamage(float damageAmount)
         {
-            if (_isDead)
+            if (IsDead)
                 return;
 
             _currentHealth -= damageAmount;
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
+                IsDead = true;
                 Died?.Invoke();
                 Die();
             }
