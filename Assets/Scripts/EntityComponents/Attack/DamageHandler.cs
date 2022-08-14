@@ -16,8 +16,6 @@ namespace EntityComponents.Attack
 
         public event Action<float> HealthChanged;
 
-        public event Action Died;
-
         private void Start() => _currentHealth = _maxHealth;
 
         public void ApplyDamage(float damageAmount)
@@ -30,7 +28,6 @@ namespace EntityComponents.Attack
             {
                 _currentHealth = 0;
                 IsDead = true;
-                Died?.Invoke();
                 Die();
             }
 

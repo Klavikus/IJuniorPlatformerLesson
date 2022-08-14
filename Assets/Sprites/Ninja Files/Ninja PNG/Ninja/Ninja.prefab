@@ -106,8 +106,8 @@ GameObject:
   - component: {fileID: 1592732956}
   - component: {fileID: 1275793558759553950}
   - component: {fileID: 1275793558759553951}
-  - component: {fileID: 1275793558759553944}
   - component: {fileID: 1592732954}
+  - component: {fileID: 803018364}
   m_Layer: 0
   m_Name: Ninja
   m_TagString: Untagged
@@ -251,8 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be798671149c42b3bdacaed9934e27b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveController: {fileID: 1275793558759553950}
-  _attackController: {fileID: 1275793558759553951}
   _target: {fileID: 0}
   _agroDistance: 5
   _attackDistance: 1.25
@@ -305,25 +303,9 @@ MonoBehaviour:
   _attackCooldown: 1.75
   _attackHitDelay: 0.2
   _mainAttackHitSize: {x: 2.5, y: 1}
-  _secondaryWeaponPrefab: {fileID: 7321313261964834653, guid: 007e61e4bd194454e87401bfdbe04df7, type: 3}
+  _secondaryWeaponPrefab: {fileID: 7321313261964834593, guid: 007e61e4bd194454e87401bfdbe04df7, type: 3}
   _secondaryWeaponPivot: {fileID: 1275793557344641078}
   _secondaryAttackCooldown: 3
---- !u!114 &1275793558759553944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275793558759553893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ff75774c1145cda6cf3f9eb3741d09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveController: {fileID: 1275793558759553950}
-  _attackController: {fileID: 1275793558759553951}
-  _damageHandler: {fileID: 1592732954}
-  _animator: {fileID: 135998337}
 --- !u!114 &1592732954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,3 +319,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
+--- !u!114 &803018364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275793558759553893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f560b1a374b7598804ceaa878a5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 135998337}
+  _moveController: {fileID: 1275793558759553950}
+  _attackController: {fileID: 1275793558759553951}
+  _damageHandler: {fileID: 1592732954}
+  _inputHandler: {fileID: 1592732956}

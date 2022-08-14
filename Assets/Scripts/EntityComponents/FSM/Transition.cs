@@ -1,6 +1,7 @@
 ﻿using System;
+using EntityComponents.FSM.States;
 
-namespace ScriptsForSort
+namespace EntityComponents.FSM
 {
     public class Transition
     {

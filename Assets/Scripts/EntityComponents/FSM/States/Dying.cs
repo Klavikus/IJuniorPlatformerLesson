@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ScriptsForSort.States
+namespace EntityComponents.FSM.States
 {
     public class Dying : IState
     {

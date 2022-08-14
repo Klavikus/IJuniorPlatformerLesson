@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using EntityComponents.Control;
 using UnityEngine;
 
 namespace EntityComponents.Attack
@@ -20,8 +21,28 @@ namespace EntityComponents.Attack
 
         private bool _isAttackLocked;
         private bool _isSecondaryAttackLocked;
+        private bool _isAttacking;
 
-        public event Action AttackInitiated;
+        public bool IsAttacking
+        {
+            get
+            {
+                if (_isAttacking == false)
+                    return false;
+
+                _isAttacking = false;
+                return true;
+            }
+        }
+
+        public void HandleInput(InputData inputData)
+        {
+            if (inputData.IsMainAttack)
+                TryAttack();
+
+            if (inputData.IsSecondaryAttack)
+                TrySecondaryAttack();
+        }
 
         public void TryAttack()
         {
@@ -43,30 +64,30 @@ namespace EntityComponents.Attack
         {
             _isSecondaryAttackLocked = true;
 
-            StartCoroutine(StartCooldown(_secondaryAttackCooldown, OnEnded: () => _isSecondaryAttackLocked = false));
-            ThrowWeapon spawnedObject = Instantiate(_secondaryWeaponPrefab, _secondaryWeaponPivot.position,
+            StartCoroutine(StartCooldown(_secondaryAttackCooldown, onEnded: () => _isSecondaryAttackLocked = false));
+            ThrowWeapon throwWeapon = Instantiate(_secondaryWeaponPrefab, _secondaryWeaponPivot.position,
                 _secondaryWeaponPivot.rotation);
 
-            spawnedObject.Init(_whatAttack);
+            throwWeapon.Init(_whatAttack);
 
             if (transform.localScale.x < 0)
-                spawnedObject.transform.Rotate(new Vector3(0, 0, 1), 180);
+                throwWeapon.transform.Rotate(new Vector3(0, 0, 1), 180);
 
             yield return new WaitForSeconds(_secondaryAttackCooldown);
         }
 
-        private IEnumerator StartCooldown(float delay, Action OnEnded)
+        private IEnumerator StartCooldown(float delay, Action onEnded)
         {
             yield return new WaitForSeconds(delay);
-            OnEnded?.Invoke();
+            onEnded?.Invoke();
         }
 
         private IEnumerator Attack()
         {
             _isAttackLocked = true;
-            StartCoroutine(StartCooldown(_attackCooldown, OnEnded: () => _isAttackLocked = false));
+            _isAttacking = true;
 
-            AttackInitiated?.Invoke();
+            StartCoroutine(StartCooldown(_attackCooldown, onEnded: () => _isAttackLocked = false));
 
             yield return new WaitForSeconds(_attackHitDelay);
 
@@ -74,14 +95,14 @@ namespace EntityComponents.Attack
 
             for (int i = 0; i < count; i++)
             {
-                if (_hits[i].TryGetComponent(out IDamageable damageable))
-                {
+                if (_hits[i].TryGetComponent(out IDamageable damageable)) 
                     damageable.ApplyDamage(5f);
-                }
             }
+
+            _isAttacking = false;
         }
 
-        private int GetHitsByOverlap(in Collider2D[] _colliders) =>
-            Physics2D.OverlapBoxNonAlloc(_mainWeaponHitbox.position, _mainAttackHitSize, 0, _colliders, _whatAttack);
+        private int GetHitsByOverlap(in Collider2D[] colliders) =>
+            Physics2D.OverlapBoxNonAlloc(_mainWeaponHitbox.position, _mainAttackHitSize, 0, colliders, _whatAttack);
     }
 }

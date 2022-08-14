@@ -1,13 +1,9 @@
-using EntityComponents.Attack;
-using EntityComponents.Movement;
 using UnityEngine;
 
-namespace EntityComponents.Input
+namespace EntityComponents.Control
 {
-    public class EnemyAI : MonoBehaviour
+    public class EnemyAI : InputHandler
     {
-        [SerializeField] private MoveController2D _moveController;
-        [SerializeField] private AttackController _attackController;
         [SerializeField] private Transform _target;
         [SerializeField] private float _agroDistance;
         [SerializeField] private float _attackDistance;
@@ -27,20 +23,28 @@ namespace EntityComponents.Input
 
             if (Mathf.Abs(_currentDistance.x) > _agroDistance)
                 return;
+            
+            float horizontal = 0;
+            bool isJumping = false;
+            bool isDashing = false;
+            bool isMainAttack = false;
+            bool isSecondaryAttack = false;
 
             if (_currentDistance.x < -_attackDistance)
-                _moveController.HandleMove(MaxHorizontalInput);
+                horizontal = MaxHorizontalInput;
 
             if (_currentDistance.x > _attackDistance)
-                _moveController.HandleMove(-MaxHorizontalInput);
+                horizontal = -MaxHorizontalInput;
 
             if (_allowJump && _target.position.y > transform.position.y + _targetOffset.y)
-                _moveController.HandleJump();
+                isJumping = true;
 
             if (_currentDistance.x <= _attackDistance && _currentDistance.x >= -_attackDistance)
-                _attackController.TryAttack();
+                isMainAttack = true;
 
-            _attackController.TrySecondaryAttack();
+            isSecondaryAttack = true;
+
+            InputUpdated?.Invoke(new InputData(horizontal, isDashing, isJumping, isMainAttack, isSecondaryAttack));
         }
     }
 }

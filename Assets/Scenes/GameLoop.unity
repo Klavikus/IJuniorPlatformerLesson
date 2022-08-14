@@ -191,10 +191,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ninja
       objectReference: {fileID: 0}
-    - target: {fileID: 1275793558759553893, guid: d51d5e9bfafb60c4bba9426d4488915d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1275793558759553947, guid: d51d5e9bfafb60c4bba9426d4488915d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -239,10 +235,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1275793558759553951, guid: d51d5e9bfafb60c4bba9426d4488915d, type: 3}
-      propertyPath: _secondaryWeaponPrefab
-      value: 
-      objectReference: {fileID: 7321313261964834593, guid: 007e61e4bd194454e87401bfdbe04df7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51d5e9bfafb60c4bba9426d4488915d, type: 3}
 --- !u!4 &293831227 stripped
@@ -3047,10 +3039,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7069768731943669927, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
-      propertyPath: _secondaryWeaponPrefab
-      value: 
-      objectReference: {fileID: 7321313261964834593, guid: 1a78d99d2e438ca449f076b4a6d382b6, type: 3}
     - target: {fileID: 7069768731943669928, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3099,65 +3087,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1492439070, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
---- !u!1 &7069768731430232511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7069768731943669935, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
-  m_PrefabInstance: {fileID: 7069768731430232510}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7069768731430232512 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7069768731943669925, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
-  m_PrefabInstance: {fileID: 7069768731430232510}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7069768731430232511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53c53fbf53a4ae7af55cd01f84e71f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7069768731430232513 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7069768731943669933, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
-  m_PrefabInstance: {fileID: 7069768731430232510}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7069768731430232511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1973adff3ce1041b5f07fa7fbee4e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7069768731430232514 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7069768731943669929, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
-  m_PrefabInstance: {fileID: 7069768731430232510}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7069768731430232511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77f67ad4b1fb9294a903c6eaa9f14216, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &7069768731430232515 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7069768731943669926, guid: 182bb8b9f508be04d908e2a1dd3b6ce0, type: 3}
-  m_PrefabInstance: {fileID: 7069768731430232510}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7069768731430232516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7069768731430232511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f560b1a374b7598804ceaa878a5be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 7069768731430232515}
-  _moveController: {fileID: 7069768731430232513}
-  _damageHandler: {fileID: 7069768731430232512}
-  _inputHandler: {fileID: 7069768731430232514}

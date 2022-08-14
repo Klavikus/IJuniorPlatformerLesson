@@ -1,4 +1,4 @@
-﻿namespace ScriptsForSort
+﻿namespace EntityComponents.FSM.States
 {
     public interface IState
     {

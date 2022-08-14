@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using EntityComponents.Input;
+using EntityComponents.Control;
 using UnityEngine;
 
 namespace EntityComponents.Movement
@@ -51,9 +51,10 @@ namespace EntityComponents.Movement
             if (inputData.IsJumping)
                 HandleJump();
 
-            if (inputData.IsDashed) 
+            if (inputData.IsDashing) 
                 HandleDash();
         }
+        
         public void HandleMove(float horizontalInput)
         {
             if (_isMoveLocked)
@@ -135,25 +136,10 @@ namespace EntityComponents.Movement
             IsGrounded = Physics2D.OverlapCircle(_groundCheckAnchor.position, _groundedRadius, _whatIsGround);
             _isFacedWall = Physics2D.OverlapBox(_wallCheckAnchor.position, _wallCheckerSize, 0,_whatIsWall);
 
-            DrawDebugBox(_wallCheckAnchor.position, _wallCheckerSize, Color.blue, 1f);
-
             if (_isDoubleJumpAllowed == false && IsGrounded)
                 _isDoubleJumpAllowed = true;
 
             CurrentMoveSpeed = Mathf.Abs(_rigidbody.velocity.x) / _horizontalSpeed;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawCube(_wallCheckAnchor.position, _wallCheckerSize);
-        }
-
-        private void DrawDebugBox(Vector3 position, Vector2 size, Color color, float showTime)
-        {
-            Debug.DrawRay(position, Vector3.up * size.y / 2, color, showTime);
-            Debug.DrawRay(position, Vector3.down * size.y / 2, color, showTime);
-            Debug.DrawRay(position, Vector3.left * size.x / 2, color, showTime);
-            Debug.DrawRay(position, Vector3.right * size.x / 2, color, showTime);
         }
     }
 }
