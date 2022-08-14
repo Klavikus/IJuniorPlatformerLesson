@@ -13,6 +13,7 @@ namespace EntityComponents.Attack
         private float _currentHealth;
 
         public bool IsDead { private set; get; }
+        public event Action Died;
 
         public event Action<float> HealthChanged;
 
@@ -31,9 +32,13 @@ namespace EntityComponents.Attack
                 Die();
             }
 
-            HealthChanged?.Invoke(_currentHealth);
+            HealthChanged?.Invoke(_currentHealth/_maxHealth);
         }
 
-        private void Die() => Destroy(gameObject, DeathDelay);
+        private void Die()
+        {
+            Died?.Invoke();
+            Destroy(gameObject, DeathDelay);
+        }
     }
 }

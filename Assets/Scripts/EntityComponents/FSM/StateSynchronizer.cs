@@ -1,4 +1,5 @@
 ﻿using EntityComponents.Attack;
+using EntityComponents.Audio;
 using EntityComponents.Control;
 using EntityComponents.FSM.States;
 using EntityComponents.Movement;
@@ -13,6 +14,7 @@ namespace EntityComponents.FSM
         [SerializeField] private AttackController _attackController;
         [SerializeField] private DamageHandler _damageHandler;
         [SerializeField] private InputHandler _inputHandler;
+        [SerializeField] private AudioPlayer _audioPlayer;
 
         private const double MaxError = 0.3f;
 
@@ -34,12 +36,12 @@ namespace EntityComponents.FSM
         {
             _stateMachine = new StateMachine();
 
-            IState idle = new Idle();
-            IState dying = new Dying(_animator);
-            IState moving = new Moving(_animator, _moveController);
-            IState jumping = new Jumping(_animator);
-            IState dashing = new Dashing(_animator);
-            IState attacking = new Attacking(_animator);
+            IState idle = new Idle(_audioPlayer);
+            IState dying = new Dying(_animator, _audioPlayer);
+            IState moving = new Moving(_animator, _moveController, _audioPlayer);
+            IState jumping = new Jumping(_animator, _audioPlayer);
+            IState dashing = new Dashing(_animator, _audioPlayer);
+            IState attacking = new Attacking(_animator, _audioPlayer);
 
             _stateMachine.AddTransition(idle, moving, () => Mathf.Abs(_moveController.CurrentMoveSpeed) > MaxError);
             _stateMachine.AddTransition(moving, idle, () => Mathf.Abs(_moveController.CurrentMoveSpeed) < MaxError);
@@ -55,7 +57,7 @@ namespace EntityComponents.FSM
             _stateMachine.SetState(idle);
         }
 
-        private void Update() => 
+        private void Update() =>
             _stateMachine.Tick();
     }
 }

@@ -5,10 +5,10 @@ namespace EntityComponents.Attack
 {
     public class ThrowWeapon : MonoBehaviour
     {
+        [SerializeField] private GameObject _hitVFX;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _lifeTime;
         [SerializeField] private float _damage;
-        [SerializeField] private GameObject _hitVFX;
         [SerializeField] private float _radius;
 
         private LayerMask _whatAttack;
@@ -34,6 +34,7 @@ namespace EntityComponents.Attack
                     }
                 }
 
+                
                 Instantiate(_hitVFX, transform.position, quaternion.identity);
                 Destroy(gameObject);
             }
