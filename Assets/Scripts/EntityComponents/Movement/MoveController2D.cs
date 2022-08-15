@@ -54,8 +54,8 @@ namespace EntityComponents.Movement
             if (inputData.IsDashing) 
                 HandleDash();
         }
-        
-        public void HandleMove(float horizontalInput)
+
+        private void HandleMove(float horizontalInput)
         {
             if (_isMoveLocked)
                 return;
@@ -69,7 +69,7 @@ namespace EntityComponents.Movement
             _rigidbody.velocity = new Vector2(horizontalInput * _horizontalSpeed, _rigidbody.velocity.y);
         }
 
-        public void HandleJump()
+        private void HandleJump()
         {
             if (IsGrounded || _isDoubleJumpAllowed)
             {
@@ -81,7 +81,7 @@ namespace EntityComponents.Movement
             }
         }
 
-        public void HandleDash()
+        private void HandleDash()
         {
             if (_canDash == false)
                 return;
